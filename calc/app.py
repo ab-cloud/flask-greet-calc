@@ -32,6 +32,18 @@ def div_func():
     result = div(a,b)
     return str(result)
 
+operands = {
+    "add": add,
+    "sub": sub,
+    "mult": mult,
+    "div": div,
+}
+@app.route('/math/<oper>')
+def math_fun(oper):
+    a = int(request.args.get('a'))
+    b = int(request.args.get('b'))
+    result = operands[oper](a, b)
+    return str(result)
 
 
 if __name__ == "__main__":
